@@ -78,5 +78,4 @@ To run this project, you will need to add/install the following environment vari
       - Update Admin Information.
       - Get Admin Information.
 ## ER Diagram
-![ER Diagram]([https://](https://raw.githubusercontent.com/connectkhalid/NPL-Football-League/main/Readme%20asset/ER%20Diagram%20NPL.png
-))
+![ER Diagram](https://raw.githubusercontent.com/connectkhalid/NPL-Football-League/main/Readme%20asset/ER%20Diagram%20NPL.png)
