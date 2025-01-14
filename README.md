@@ -18,7 +18,7 @@ This is a Spring Boot application providing backend APIs for a football game. It
 To run this project, you will need to add/install the following environment variable
 
 [`JDK 17`](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
-[`Gradle 8.1`](https://gradle.org/next-steps/?version=8.1&format=all)
+[`Maven`](https://maven.apache.org/install.html)
 [`IntelliJ IDEA`](https://www.jetbrains.com/idea/)
 
 
@@ -35,10 +35,10 @@ To run this project, you will need to add/install the following environment vari
 
 ## Features-
 ## Public Features:
-  ### 1. Register roles
-  ### 2. Register Admin/Superadmin
-  ### 3. Login
-  ### 4. Logout
+  - Register roles
+  - Register Admin/Superadmin
+  - Login
+  - Logout
 
 ## Private Features:  
   ### 1. Player Features
