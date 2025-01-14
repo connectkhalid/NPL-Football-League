@@ -1,0 +1,63 @@
+#my-32-character-ultra-secure-and-ultra-long-secret
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/national_football_league
+    username: root
+    password: root
+
+  main:
+    lazy-initialization: true
+  jmx:
+    enabled: false
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: "org.hibernate.dialect.MySQLDialect"
+    hibernate:
+      ddl-auto: update
+      hibernate:
+        format_sql: true
+insecurity:
+  path:
+    publicPath : /api/pub/**
+
+#Enable CSRF
+csrf:
+  enable: false
+
+jwt:
+  get:
+    token:
+      uri: /api/authenticate
+  http:
+    request:
+      header: Authorization
+  refresh:
+    token:
+      uri: /api/refresh
+  logout:
+    token:
+      uri: /api/logout
+  signing:
+    key:
+      secret: c9bf8ff8678a994833b1729cfea9c8e0a654c5bc2bbb392fbd7beaa4de29357d
+  token:
+    expiration:
+      in:
+        seconds: 86400
+
+  clientauth:
+    secret-key: "9653f6bff18bd619b08659ee175b115811b39793e1c235d8a6edb9c088209df2"
+    isses:
+      - "http://localhost:8081"
+    expired-interval-seconds: 3600
+    typ: JWT
+server:
+  port : 8081
