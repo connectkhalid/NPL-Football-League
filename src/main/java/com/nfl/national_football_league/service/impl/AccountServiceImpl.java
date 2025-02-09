@@ -35,7 +35,7 @@ public class AccountServiceImpl implements AccountService {
      private final AuthCommonService authCommonService;
 
     @Override
-    public AccountRegisterResponse registerAccount(AccountRegisterInputParameter parameter) throws AccountServiceException, RoleServiceException {
+    public AccountRegisterResponse registerAccount(AccountRegisterInputParameter parameter) throws RoleServiceException {
 
         RoleInfo roleInfo = roleInfoRepository.findByRoleCode(parameter.getRoleCode());
         if(Objects.isNull(roleInfo)){
@@ -78,7 +78,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountInfo getAccountInformationByEmail(String mailAddress) throws AccountServiceException, AuthServiceException {
+    public AccountInfo getAccountInformationByEmail(String mailAddress) throws  AuthServiceException {
         AccountInfo accountInfo = accountInfoRepository.findByMailAddressAndDeleteFlgIsFalse(mailAddress);
         if(Objects.isNull(accountInfo)){
             log.info("account nothing.");
@@ -89,7 +89,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<AccountRegisterResponse> getAdminList() throws AccountServiceException {
+    public List<AccountRegisterResponse> getAdminList() {
 
         return accountInfoRepository.findAll()
                 .stream()
@@ -109,7 +109,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountRegisterResponse getAdminInfo(long adminId) throws AccountServiceException, AuthServiceException {
+    public AccountRegisterResponse getAdminInfo(long adminId) throws AuthServiceException {
 
         Optional<AccountInfo> currentUserAccountInfo = accountInfoRepository.findByAccessKey(authCommonService.getAccessKey());
         if(currentUserAccountInfo.isEmpty() || (currentUserAccountInfo.get().getRoleInfoId() != 1 && currentUserAccountInfo.get().getId() != adminId)){
@@ -138,7 +138,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountRegisterResponse updateAdminInfo(AccountUpdateInputParameter parameter) throws AccountServiceException, AuthServiceException {
+    public AccountRegisterResponse updateAdminInfo(AccountUpdateInputParameter parameter) throws AuthServiceException {
         Optional<AccountInfo> currentUserAccountInfo = accountInfoRepository.findByAccessKey(authCommonService.getAccessKey());
         if(currentUserAccountInfo.isEmpty() || (currentUserAccountInfo.get().getRoleInfoId() != 1 && currentUserAccountInfo.get().getId() != parameter.getAdminId())){
             log.info("account nothing.");
